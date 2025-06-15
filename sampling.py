@@ -466,6 +466,8 @@ class FluxSamplerParams:
                                     for sc in scheduler:
                                         for st in steps:
                                             for d in denoise:
+                                                if seed == "?":
+                                                    noise = [random.randint(0, 2147483646)]
                                                 sigmas = basicschedueler.get_sigmas(work_model, sc, st, d)[0]
                                                 current_sample += 1
                                                 log = f"Sampling {current_sample}/{total_samples} with seed {n}, sampler {s}, scheduler {sc}, steps {st}, guidance {g}, max_shift {ms}, base_shift {bs}, denoise {d}"
